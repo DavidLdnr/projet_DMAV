@@ -4,30 +4,35 @@
 
 
 #------------------------------------------------------------
-# Table: USER
+# Create: database
 #------------------------------------------------------------
-
-CREATE TABLE USER(
-        USER_id     int (11) Auto_increment  NOT NULL ,
-        USER_pseudo Varchar (50) NOT NULL ,
-        USER_mdp    Varchar (50) NOT NULL ,
-        PRIMARY KEY (USER_id )
-)ENGINE=InnoDB;
-
+CREATE DATABASE IF NOT EXISTS mediabase
 
 #------------------------------------------------------------
-# Table: DATAS
+# Table: users
 #------------------------------------------------------------
 
-CREATE TABLE DATAS(
-        DATA_id          int (11) Auto_increment  NOT NULL ,
-        DATA_type        Int NOT NULL ,
-        DATA_chemin      Varchar (100) NOT NULL ,
-        DATA_mimetype    Varchar (25) NOT NULL ,
-        DATA_description Varchar (50) NOT NULL ,
-        DATA_date        Datetime NOT NULL ,
-        USER_id          Int NOT NULL ,
-        PRIMARY KEY (DATA_id )
-)ENGINE=InnoDB;
+CREATE TABLE users(
+        id     int NOT NULL AUTO_INCREMENT,
+        pseudo Varchar(50) NOT NULL ,
+        mdp    Varchar(50) NOT NULL ,
+        PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
 
-ALTER TABLE DATAS ADD CONSTRAINT FK_DATAS_USER_id FOREIGN KEY (USER_id) REFERENCES USER(USER_id);
+
+#------------------------------------------------------------
+# Table: datas
+#------------------------------------------------------------
+
+CREATE TABLE datas(
+        id          int NOT NULL  AUTO_INCREMENT,
+        type        Int NOT NULL ,
+        chemin      Varchar(100) NOT NULL ,
+        mimetype    Varchar(25) NOT NULL ,
+        description Varchar(50) NOT NULL ,
+        date        Datetime NOT NULL ,
+        id_user     Int NOT NULL ,
+        PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 DEFAULT COLLATE utf8_unicode_ci;
+
+ALTER TABLE DATAS ADD CONSTRAINT FK_DATAS_id_USER FOREIGN KEY (id_user) REFERENCES USER(id);
