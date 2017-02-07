@@ -24,7 +24,7 @@ private function __construct() {
 	if ($result->rowcount==1)
 		{
 		$obj=$result->fetchObject();
-		return new user($obj->id,$obj->pseudo,$obj->mdp);
+		return new User($obj->id,$obj->pseudo,$obj->mdp);
 		}
 	else return null;
   }
