@@ -10,6 +10,7 @@
 		<header>
 		<div id='btnconnexion'>
 		<?php
+		require_once('autoload.php');
 		if ($_SESSION['user_id']->exist_id()==false)
 		{?>
 			<a href="lien vers la page de connexion'"><input type="button" name="connexion "value="connexion"/></a>
