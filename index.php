@@ -45,6 +45,10 @@
 		<span id='titre_son'>titre du son</span>
 		<span id='date_son'>date</span>
 		</div>
+		<?php
+		$obj = new FormConnexion;
+		echo $obj;
+		?>
 		<footer>
 			<p>© Copyright 2017 - Marie - Antoine - David - Vincent</p>
 		</footer>
