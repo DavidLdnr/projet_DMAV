@@ -11,14 +11,14 @@
 		<div id='btnconnexion'>
 		<?php
 		require_once('autoload.php');
-		if ($_SESSION['user_id']->exist_id()==false)
-		{?>
+		if (Authentification::getInstance()->isAuth())
+		{ ?>
 			<a href="lien vers la page de connexion'"><input type="button" name="connexion "value="connexion"/></a>
-		<?php}
-		else {?>
+		<?php }
+		else { ?>
 		<a href="lien vers le script d'upload'"><input type="button" name="upload "value="upload"/></a>	
 		<a href="lien vers le script de déconnexion'"><input type="button" name="dénnexion "value="dénnexion"/></a>	
-		<?php}?>
+		<?php } ?>
 		</div>
 		<div id='btnconnexion'>
 		logo/nom du site
