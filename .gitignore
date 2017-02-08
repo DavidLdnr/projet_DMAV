@@ -1,3 +1,5 @@
 *.sln
 projetobj.phpproj
 *.suo
+*.user
+accueil.php
