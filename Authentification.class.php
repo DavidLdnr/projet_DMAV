@@ -28,7 +28,7 @@ class Authentification {
 			Session::getInstance()->start();
 			Session::getInstance()->save_user_id($user->id);
             $this->currentUser=$user;
-			header('Location: ./index.php');
+			//header('Location: ./index.php');
 		}
 		else
 			return false;
