@@ -33,7 +33,7 @@ private function __construct() {
   }
     
   public function insert_data($titre,$description,$file) {
-      $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES (1, '$file', 1, '$description', '2017-10-17', '".Authentification::getInstance()->getUser()->id."')";
+      $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES (1, '$file', 1, '$description', '2017-10-17', '".$_SESSION['user_id']."')";
       echo $req;
       try
     {

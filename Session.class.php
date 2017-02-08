@@ -1,31 +1,32 @@
 <?php
 class Session {
-  private static $instance;
+  private static $instance = null;
   private $nom;
 
-  
+
   private function __construct($nom) {
     $this->nom = $nom;
   }
 
   public static function getInstance($nom='user_id') {
-    if (!self::$instance) self::$instance = new self($nom);
+    if (self::$instance == null)
+        self::$instance = new Session($nom);
     return self::$instance;
   }
-  
+
   public function start() {
     session_name($this->nom);
-    session_start();   
+    session_start();
   }
-  
+
   public function save_user_id($user_id){
-	$_SESSION['user_id']=$user_id; 
+	$_SESSION['user_id']=$user_id;
   }
-  
+
   public function exist_id(){
 	if (isset($_SESSION['user_id']))
-		return true; 
-	else 
+		return true;
+	else
 		return false;
 	}
 
@@ -36,5 +37,5 @@ class Session {
       die("la session ne peut être détruite car elle n'est pas active !");
     }
   }
-  
+
 }
