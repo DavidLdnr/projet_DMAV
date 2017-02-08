@@ -15,12 +15,13 @@ class Session {
   }
 
   public function start() {
-    session_name($this->nom);
-   // session_start();
+    //session_name($this->nom);
+    session_start();
   }
 
-  public function save_user_id($user_id){
-	$_SESSION['user_id']=$user_id;
+  public function save($user){
+	$_SESSION['user_id']= $user->id;
+    $_SESSION['user_name']=$user->pseudo;
   }
 
   public function exist_id(){

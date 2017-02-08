@@ -23,7 +23,7 @@ Session::getInstance()->start();
                     </a>
                     <?php }
 		else { 
-        echo "Welcome ".$_SESSION['user_id']." !<br>"; ?>
+        echo "Welcome ".$_SESSION['user_name']." !<br>"; ?>
                         <a href="index.php?page=upload">
                             <input type="button" name="upload " value="upload" />
                         </a>

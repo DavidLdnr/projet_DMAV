@@ -24,7 +24,7 @@ class Authentification {
 		$mdpbdd=$user->mdp;
 		if ($mdpbdd==$mdp)
 		{
-			Session::getInstance()->save_user_id($user->id);
+			Session::getInstance()->save($user);
 			header('Location: ./index.php');
 
 		}
