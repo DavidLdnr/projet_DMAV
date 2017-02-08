@@ -26,6 +26,7 @@ class Authentification {
 		{
 			Session::getInstance()->save_user_id($user->id);
 			header('Location: ./index.php');
+
 		}
 		else
 			return false;
