@@ -3,3 +3,4 @@ projetobj.phpproj
 *.suo
 *.user
 accueil.php
+*.config
