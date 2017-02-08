@@ -17,7 +17,7 @@
 		<?php }
 		else { ?>
 		<a href="index.php?page=upload"><input type="button" name="upload "value="upload"/></a>	
-		<a href="lien vers le script de déconnexion'"><input type="button" name="déconnexion "value="déconnexion"/></a>	
+		<a href="index.php?page=deconnexion"><input type="button" name="déconnexion "value="déconnexion"/></a>	
 		<?php } ?>
 		</div>
 		<div id='btnconnexion'>
