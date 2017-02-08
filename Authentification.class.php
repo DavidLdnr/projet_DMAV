@@ -1,7 +1,6 @@
 <?php
 class Authentification {
   private static $instance;
-  private $currentUser;
 
 
   private function __construct(){}
@@ -25,9 +24,7 @@ class Authentification {
 		$mdpbdd=$user->mdp;
 		if ($mdpbdd==$mdp)
 		{
-			Session::getInstance()->start();
 			Session::getInstance()->save_user_id($user->id);
-            $this->currentUser=$user;
 			header('Location: ./index.php');
 		}
 		else
@@ -36,13 +33,8 @@ class Authentification {
 	else return false;
 	}
 
-  public function getUser(){
-      return $this->currentUser;
-  }
-
   public function disconnect(){
 	Session::getInstance()->stop();
-    $this->currentUser=null;
 	}
 
 }
