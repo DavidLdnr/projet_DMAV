@@ -1,3 +1,4 @@
 <?php
-	  Session::stop();
+Session::getInstance()->stop();
+header('Location: ./index.php');
 ?>

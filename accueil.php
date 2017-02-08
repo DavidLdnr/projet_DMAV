@@ -1,6 +1,6 @@
 <div id='video'>
     <strong>Vidéo</strong>
-    <video src="lien de la derniére vidéo sur le site" controls width="600"></video>
+    <video src="lien de la dernière vidéo sur le site" controls width="600"></video>
     <span id='auteur_video'>nom de l'auteur</span>
     <span id='titre_video'>titre de la vidéo</span>
     <span id='date_video'>date</span>

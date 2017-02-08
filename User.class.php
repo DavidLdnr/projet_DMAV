@@ -10,6 +10,4 @@ class User {
 	$this->pseudo=$pseudo;
 	$this->mdp=$mdp;
 	}
-
-
 }

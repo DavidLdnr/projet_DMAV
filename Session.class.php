@@ -35,6 +35,6 @@ class Session {
     } else {
       die("la session ne peut être détruite car elle n'est pas active !");
     }
-  } 
+  }
   
 }

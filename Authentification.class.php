@@ -22,6 +22,8 @@ class Authentification {
 			{
 			Session::getInstance()->start();
 			Session::getInstance()->save_user_id($user_login);
+			 
+			//$_SESSION['user_id']=$user_login;
 			header('Location: ./index.php');
 			}
 		else 
@@ -33,5 +35,5 @@ class Authentification {
   public function disconnect(){
 	Session::getInstance()->stop();
 	}
-	 
+	
 }
