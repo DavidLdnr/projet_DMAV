@@ -16,7 +16,7 @@ class Session {
 
   public function start() {
     session_name($this->nom);
-    session_start();
+   // session_start();
   }
 
   public function save_user_id($user_id){
