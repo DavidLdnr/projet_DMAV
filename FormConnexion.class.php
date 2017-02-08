@@ -6,7 +6,9 @@ class FormConnexion {
 	}
 	function check($user_login, $mdp)
 	{
-	Authentification::getInstance()->checkUser($user_login,$mdp);
+	$auth=Authentification::getInstance()->checkUser($user_login,$mdp);
+	if ($auth != null)
+	echo $user->id;
 	}
 	
 	

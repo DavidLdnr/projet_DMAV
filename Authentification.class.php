@@ -16,16 +16,18 @@ class Authentification {
 	if ($user != null)
 		{
 		// Reste à ajouter le grin de sel
-		$mdp=md5($mdp);
+		//$mdp=md5($mdp);
 		$mdpbdd=$user->mdp;
 		if ($mdpbdd==$mdp)
-		{
-		Session::getInstance()->start();
-		Session::getInstance()->save_user_id($user_login);	
-		}
+			{
+			Session::getInstance()->start();
+			Session::getInstance()->save_user_id($user_login);
+			header('Location: ./index.php');
+			}
 		else 
 			return false;
 		}
+	else return false;	
 	}
 	
   public function disconnect(){
