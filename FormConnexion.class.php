@@ -6,7 +6,6 @@ function __toString(){
 	function check($user_login, $mdp)
 	{
 	$auth=Authentification::getInstance()->checkUser($user_login,$mdp);
-    //if ($auth != null)
 	}
 	
 	}

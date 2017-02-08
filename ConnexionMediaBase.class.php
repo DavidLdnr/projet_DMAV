@@ -23,12 +23,17 @@ private function __construct() {
 	try
     {
  	    $result=$this->dbh->query($req);
- 		$obj=$result->fetchObject();
- 		return new User($obj->id,$obj->pseudo,$obj->mdp);
+        $obj=$result->fetchObject();
+        return new User($obj->id,$obj->pseudo,$obj->mdp);
      }
      catch (PDOException $exception)
      {
         return null;
      }
   }
+    
+  public function inset_data($titre,$description,$file) {
+      $req="INSERT INTO DATAS"
+  }
+    
 }
