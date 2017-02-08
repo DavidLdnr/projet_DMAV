@@ -15,7 +15,7 @@ class Authentification {
 	$user=ConnexionMediaBase::getInstance()->get_user($user_login);
 	if ($user != null)
 		{
-		// Reste à ajouter le grin de sel
+		// Reste Ã  ajouter le grin de sel
 		//$mdp=md5($mdp);
 		$mdpbdd=$user->mdp;
 		if ($mdpbdd==$mdp)
@@ -33,5 +33,5 @@ class Authentification {
   public function disconnect(){
 	Session::getInstance()->stop();
 	}
-	
+	 
 }

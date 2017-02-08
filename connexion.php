@@ -8,5 +8,5 @@
 		$obj->check($_POST['pseudo'],$_POST['mdp']);
 		
 		
-		
+		 
 		?>

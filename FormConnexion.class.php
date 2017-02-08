@@ -10,7 +10,7 @@ class FormConnexion {
 	if ($auth != null)
 	echo $user->id;
 	}
-	
+	 
 	
 	
 	}
