@@ -32,8 +32,17 @@ private function __construct() {
      }
   }
     
-  public function inset_data($titre,$description,$file) {
-      $req="INSERT INTO DATAS"
+  public function insert_data($titre,$description,$file) {
+      $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES (1, '$file', 1, '$description', '2017-10-17', '".Authentification::getInstance()->getUser()->id."')";
+      echo $req;
+      try
+    {
+ 	    $result=$this->dbh->query($req);
+     }
+     catch (PDOException $exception)
+     {
+        return null;
+     }
   }
     
 }

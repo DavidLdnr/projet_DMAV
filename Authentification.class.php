@@ -1,7 +1,8 @@
 <?php 
 class Authentification {
   private static $instance;
-
+  private $currentUser; 
+ 
   public static function getInstance() {
     if (!self::$instance) self::$instance = new self();
     return self::$instance;
@@ -22,8 +23,7 @@ class Authentification {
 			{
 			Session::getInstance()->start();
 			Session::getInstance()->save_user_id($user_login);
-			 
-			//$_SESSION['user_id']=$user_login;
+            $this->currentUser=$user;            
 			header('Location: ./index.php');
 			}
 		else 
@@ -31,9 +31,14 @@ class Authentification {
 		}
 	else return false;	
 	}
-	
+
+  public function getUser(){
+      return $this->currentUser;
+  }    
+    
   public function disconnect(){
 	Session::getInstance()->stop();
+    $this->currentUser=null;
 	}
 	
 }
