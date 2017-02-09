@@ -67,7 +67,7 @@ private function __construct() {
 	}
 
     echo"1";
-    if(isset($_FILES['fichier'])) // si formulaire soumis
+    if(isset($_FILES['file'])) // si formulaire soumis
     { 
 	    echo"2";
         if($type == 1)
@@ -83,7 +83,7 @@ private function __construct() {
 		    $content_dir = $repertoire4;// dossier où sera déplacé le fichier
 	    }  
   
-        $tmp_file = $_FILES['fichier']['tmp_name'];
+        $tmp_file = $_FILES['file']['tmp_name'];
 	    
         if( !is_uploaded_file($tmp_file) )
         {
@@ -91,7 +91,7 @@ private function __construct() {
         }
      
         // on vérifie maintenant l'extension
-        $filename = $_FILES['fichier']['name'];
+        $filename = $_FILES['file']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
 	    if ($type == 1)
         {
@@ -116,7 +116,7 @@ private function __construct() {
 	    }
 
             // on copie le fichier dans le dossier de destination
-            $name_file = $_FILES['fichier']['name'];
+            $name_file = $_FILES['file']['name'];
             if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
             {
                 exit("Nom de fichier non valide");
@@ -136,7 +136,8 @@ private function __construct() {
     $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '$ext', '$description', '$date', '".$_SESSION['user_id']."')";
     echo $req;
 		$result=$this->dbh->query($req);
-	}		
+	}
+else echo"3";	
 		}
 		catch (PDOException $exception)
 		{
