@@ -106,7 +106,7 @@ private function __construct() {
 	    }
          elseif ($type == 3)
         {
-            if(!in_array(strtolower($ext), array('gif', 'svg', 'png', 'jpg', 'jpeg')))
+             if(!in_array(strtolower($ext), array('gif', 'svg', 'png', 'jpg', 'jpeg')))
             {
                 exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
             }
@@ -140,4 +140,41 @@ private function __construct() {
 			exit("erreur de transfert vers le serveur");
 		}
   }
+    public function recherche($auteur,$description,$type){
+        
+        if ($auteur!="")
+        {
+            $reqaut="SELECT * FROM users where pseudo='$auteur'";
+        try
+        {
+            $result=$this->dbh->query($reqaut);
+            $obj=$result->fetchObject();
+        }
+        catch (PDOException $exception)
+        {
+            echo $exception->getmessage();
+            return null;
+        }
+            if ($obj==null)
+                return null;
+        }
+        $req = "SELECT * FROM datas WHERE id_user=$obj->id";
+        try
+        {
+            $result=$this->dbh->query($req);
+            $i=1;
+            while ($req=$result->fetchObject())
+            {
+            echo "<p>Résultat numéro $i: ";
+            echo $req->description."</p>";
+            
+            $i++;
+            }
+         }
+         catch (PDOException $exception)
+         {
+            return null;
+         }
+      }
+    
 }
