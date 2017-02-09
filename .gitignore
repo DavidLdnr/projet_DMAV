@@ -3,4 +3,5 @@ projetobj.phpproj
 *.suo
 *.user
 *.config
-*multimedia/*
+multimedia/
+multimedia\
