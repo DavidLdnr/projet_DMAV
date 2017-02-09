@@ -1,0 +1,14 @@
+@media screen and (min-width: 100mm) {
+
+input[type="button"], input[type="submit"] {
+padding: 5px 10px;
+background: #ddd;
+border: 1px solid #2cabcf;
+color: black;
+}
+
+.btn {
+    display: inline-block;
+}
+    
+}
