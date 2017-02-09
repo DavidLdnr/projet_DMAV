@@ -1,5 +1,6 @@
 <?php 
 class FormRecherche {
+	//création du formulaire de recherche via la fonction magique __toString()
 function __toString(){
 	       return ("<form action='index.php?page=recherche' method='post'>
                         <label name='auteur'>Auteur</label><input type='text' name='auteur' value='' autofocus><br>
