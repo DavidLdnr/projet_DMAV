@@ -240,12 +240,15 @@ private function __construct() {
         $array = [];
         $result=$this->dbh->query($reqvideo);
         $req=$result->fetchObject();
+        if ($req!=null)
         $array['video']=$req;
         $result=$this->dbh->query($reqaudio);
         $req=$result->fetchObject();
+        if ($req!=null)
         $array['audio']=$req;
         $result=$this->dbh->query($reqimage);
         $req=$result->fetchObject();
+        if ($req!=null)
         $array['image']=$req;
         
         return $array;
