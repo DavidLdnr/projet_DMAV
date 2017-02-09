@@ -130,9 +130,7 @@ private function __construct() {
 
 	    $nom = $name_file;
 
-
-
-        $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '$ext', '$description', '$date', '".$_SESSION['user_id']."')";
+        $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '".$_FILES['file']['type']."', '$description', '$date', '".$_SESSION['user_id']."')";
         echo $req;
 		    $result=$this->dbh->query($req);
 	    }
