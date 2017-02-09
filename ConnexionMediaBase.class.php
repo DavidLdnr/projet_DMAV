@@ -65,10 +65,11 @@ private function __construct() {
 		mkdir ($repertoire4,0700);
 		echo " -=> Création du repertoire $repertoire4 réussi<br>";
 	}
-echo"1";
+
+    echo"1";
     if(isset($_FILES['fichier'])) // si formulaire soumis
     { 
-	echo"2";
+	    echo"2";
         if($type == 1)
         {
 		    $content_dir = $repertoire2;// dossier où sera déplacé le fichier
