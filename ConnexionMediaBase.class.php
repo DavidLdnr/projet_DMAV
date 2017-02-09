@@ -32,13 +32,15 @@ private function __construct() {
      }
   }
     
-  public function insert_data($titre,$description,$file) 
+  public function insert_data($description,$file) 
   {
+	  try
+		{
     $date = date('Y-m-d-H-i-s');
     $repertoire = "./multimedia";
-    $repertoire = "./multimedia/videos";
-    $repertoire = "./multimedia/audio";
-    $repertoire = "./multimedia/images";
+    $repertoire2 = "./multimedia/videos";
+    $repertoire3 = "./multimedia/audio";
+    $repertoire4 = "./multimedia/images";
     $type = $_POST['type'];
     $rep="";  
 		
@@ -47,25 +49,26 @@ private function __construct() {
 		mkdir ($repertoire,0700);
 		echo " -=> Création du repertoire $repertoire réussi<br>";
 	}
-	if (!file_exists($repertoire))
+	if (!file_exists($repertoire2))
 	{
 		mkdir ($repertoire2,0700);
 		echo " -=> Création du repertoire $repertoire2 réussi<br>";
 	}
-	if (!file_exists($repertoire))
+	if (!file_exists($repertoire3))
 	{
 		mkdir ($repertoire3,0700);
 		echo " -=> Création du repertoire $repertoire3 réussi<br>";
 	}
 
-	if (!file_exists($repertoire))
+	if (!file_exists($repertoire4))
 	{
 		mkdir ($repertoire4,0700);
 		echo " -=> Création du repertoire $repertoire4 réussi<br>";
 	}
-
+echo"1";
     if(isset($_FILES['fichier'])) // si formulaire soumis
     { 
+	echo"2";
         if($type == 1)
         {
 		    $content_dir = $repertoire2;// dossier où sera déplacé le fichier
@@ -80,11 +83,7 @@ private function __construct() {
 	    }  
   
         $tmp_file = $_FILES['fichier']['tmp_name'];
-	    if ($service == "0")
-	    {
-		    exit("IL FAUT OBLIGATOIREMEMENT CHOISIR UN NOM DE SERVICE POUR AJOUTER UN FICHIER!!!");
-	    }
-
+	    
         if( !is_uploaded_file($tmp_file) )
         {
             exit("Le fichier est introuvable");
@@ -99,20 +98,21 @@ private function __construct() {
             {
                 exit("Le fichier n'est pas un webm,veuillez le convertir en webm s'il vous plais!!!!!!!!!!");
             }
-            elseif ($type == 2)
+		}
+        elseif ($type == 2)
+        {
+            if($ext != 'ogg')
             {
-                if($ext != 'ogg')
-                {
-                    exit("Le fichier n'est pas un ogg,veuillez le convertir en ogg s'il vous plais!!!!!!!!!!");
-                }
-	        }
-            elseif ($type == 3)
+                exit("Le fichier n'est pas un ogg,veuillez le convertir en ogg s'il vous plais!!!!!!!!!!");
+            }
+	    }
+         elseif ($type == 3)
+        {
+            if($ext != 'gif'||$ext != 'svg'||$ext != 'png' ||$ext != 'jpg'||$ext != 'jpeg' )
             {
-                if($ext != 'gif'||$ext != 'svg'||$ext != 'png' ||$ext != 'jpg'||$ext != 'jpeg' )
-                {
-                    exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
-                }
-	        }
+                exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
+            }
+	    }
 
             // on copie le fichier dans le dossier de destination
             $name_file = $_FILES['fichier']['name'];
@@ -129,18 +129,19 @@ private function __construct() {
 
 	        $chemin = ($content_dir . $name_file);
 	        $nom = $name_file;
-        }
-	}
+        
+	
 
     $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '$ext', '$description', '$date', '".$_SESSION['user_id']."')";
     echo $req;
-    try
-    {
- 	    $result=$this->dbh->query($req);
-    }
-    catch (PDOException $exception)
-    {
-        return null;
-     }
+		$result=$this->dbh->query($req);
+	}		
+		}
+		catch (PDOException $exception)
+		{
+			return null;
+			echo"coucou";
+		 }
+	 
   }
 }
