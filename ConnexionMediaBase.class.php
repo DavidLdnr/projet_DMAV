@@ -32,7 +32,7 @@ private function __construct() {
      }
   }
     
-  public function insert_data($description,$file) 
+  public function insert_data($description, $file, $type) 
   {
 	  try
 		{
@@ -41,8 +41,7 @@ private function __construct() {
     $repertoire2 = "./multimedia/videos";
     $repertoire3 = "./multimedia/audio";
     $repertoire4 = "./multimedia/images";
-    $type = $_POST['type'];
-    $rep="";  
+    $type = $_POST['type'];  
 		
     if (!file_exists($repertoire))
 	{
