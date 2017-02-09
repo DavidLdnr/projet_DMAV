@@ -18,8 +18,10 @@ Session::getInstance()->start(); // Démarrage de la session
                 <img src="img/title.png" max-width="100%">
             </div>
             <?php
+			//on utilise une variable page qui irra chercher sur la page aillant le même nom le contenu à afficher sur index.php
 		if (Authentification::getInstance()->isAuth()==false) // Test de la connexion de l'utilisateur, si non connecté :
 		{ ?>
+		      
                 <div id='btnconnexion'>
                     <a href="index.php?page=connexion">
                         <input type="button" name="Connexion " value="connexion" />
