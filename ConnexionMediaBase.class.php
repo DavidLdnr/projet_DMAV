@@ -8,16 +8,17 @@ private $pass = '';
 private $db   = 'mediabase';
 private $dbh;
 
+//constructeur de la class ConnexionMediaBase
 private function __construct() {
  $this->dbh = new PDO('mysql:host='.$this->host.';dbname='.$this->db, $this->user, $this->pass);
 }
 
-
+//accesseur de l'instance
   public static function getInstance() {
     if (!self::$instance) self::$instance = new self();
     return self::$instance;
   }
-
+//accesseur de l'useur
   public function get_user($pseudo){
   	$req = "SELECT * FROM users where pseudo='$pseudo'";
 	try
@@ -31,18 +32,19 @@ private function __construct() {
         return null;
      }
   }
-
+//fonction d'upload (transfert vers le serveur en français) des fichier
   public function insert_data($description, $file, $type)
   {
 	  try
 		{
+			//je récupère la dâte pour la stocker dans la base de donner pour la récuperer plus tard 
     $date = date('Y-m-d-H-i-s');
     $repertoire = "./multimedia";
     $repertoire2 = "./multimedia/videos";
     $repertoire3 = "./multimedia/audio";
     $repertoire4 = "./multimedia/images";
     $type = $_POST['type'];
-
+ //au cas ou les répertoires n'éxistent pas je les créer 
     if (!file_exists($repertoire))
 	{
 		mkdir ($repertoire,0700);
@@ -115,6 +117,7 @@ private function __construct() {
         // on copie le fichier dans le dossier de destination
         $name_file = $_FILES['file']['name'];
         $chemin = $content_dir.'/'.$name_file;
+		//on test si il n'y a pas de caractère impossible à mettre das un nom de fichier normalement via une regexp
         if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
         {
             exit("Nom de fichier non valide");
@@ -127,9 +130,10 @@ private function __construct() {
         echo "Le fichier a bien été uploadé</br>";
 
 	    $nom = $name_file;
-
+		//requête de stockage dans la base de donnée le fichier
         $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '".$_FILES['file']['type']."', '$description', '$date', '".$_SESSION['user_id']."')";
         echo $req;
+		//execution de la requête 
 		    $result=$this->dbh->query($req);
 	    }
 
