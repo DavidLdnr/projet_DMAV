@@ -8,5 +8,7 @@ function __toString(){
                         Audio<input type='checkbox' name='audio' value='audio'><br>
                         <label name='description'>Description</label><input type='text' name='description' value=''>
                         <input type='submit' value='Valider'></form>");
+
+
 	}
 	}
