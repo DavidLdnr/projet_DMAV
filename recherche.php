@@ -6,8 +6,7 @@
             }
 		else if ((($_POST['auteur']!="") || ($_POST['description']!="")))
             {
-            echo $_POST['auteur'],$_POST['description'];
-            //$recherche=ConnexionMediaBase::getInstance()->recherche($_POST['auteur'],$_POST['description'],$_POST['type']);
+            $recherche=ConnexionMediaBase::getInstance()->recherche($_POST['auteur'],$_POST['description'],$_POST['type']);
             }
         else echo $obj;
 				
