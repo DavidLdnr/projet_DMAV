@@ -65,10 +65,8 @@ private function __construct() {
 		echo " -=> Création du repertoire $repertoire4 réussi<br>";
 	}
 
-    echo"1";
     if(isset($_FILES['file'])) // si formulaire soumis
     {
-	    echo"2";
         if($type == 1)
         {
 		    $content_dir = $repertoire2;// dossier où sera déplacé le fichier
@@ -134,12 +132,12 @@ private function __construct() {
         echo $req;
 		    $result=$this->dbh->query($req);
 	    }
-        else echo"3";
+       
 		}
 		catch (PDOException $exception)
 		{
 			return null;
-			echo"coucou";
+			exit("erreur de transfert vers le serveur");
 		}
   }
 }
