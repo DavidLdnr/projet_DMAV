@@ -132,7 +132,7 @@ private function __construct() {
         echo $req;
 		    $result=$this->dbh->query($req);
 	    }
-       
+
 		}
 		catch (PDOException $exception)
 		{
@@ -140,41 +140,82 @@ private function __construct() {
 			exit("erreur de transfert vers le serveur");
 		}
   }
-    public function recherche($auteur,$description,$type){
-        
-        if ($auteur!="")
-        {
-            $reqaut="SELECT * FROM users where pseudo='$auteur'";
+
+
+  public function recherche($auteur,$description,$types)
+  {
+    $user  = null;
+    if ($auteur!="")
+    {
+        $reqaut="SELECT * FROM users where pseudo='$auteur'";
         try
         {
             $result=$this->dbh->query($reqaut);
-            $obj=$result->fetchObject();
+            $user=$result->fetchObject();
         }
         catch (PDOException $exception)
         {
             echo $exception->getmessage();
             return null;
         }
-            if ($obj==null)
-                return null;
+        if ($user == null)
+            throw new Exception("Auteur inconnu");;
+    }
+
+    $withAnd = false;
+    $req = "SELECT * FROM datas WHERE ";
+    if($user != null)
+    {
+        $req.= "id_user=$user->id ";
+        $withAnd = true;
+    }
+
+    if(!empty($types))
+    {
+        if($withAnd){
+            $req .= "and "    ;
         }
-        $req = "SELECT * FROM datas WHERE id_user=$obj->id";
-        try
+
+        $withAnd = true;
+        $req.= "(type='";
+        for($i = 0; $i < count($types); $i++)
         {
-            $result=$this->dbh->query($req);
-            $i=1;
-            while ($req=$result->fetchObject())
-            {
-            echo "<p>Résultat numéro $i: ";
-            echo $req->description."</p>";
-            
-            $i++;
+            $req .= "$types[$i]'";
+            if($i < count($types) - 1){
+                $req .= " or type='";
             }
-         }
-         catch (PDOException $exception)
-         {
-            return null;
-         }
+            else
+            {
+                $req .= ") ";
+            }
+        }
+    }
+
+    if($description != "")
+    {
+        if($withAnd){
+            $req .= " and ";
+        }
+
+        $req .= "description like '%$description%'";
+    }
+
+    try
+    {
+        $result=$this->dbh->query($req);
+        $i=1;
+        while ($req=$result->fetchObject())
+        {
+        echo "<p>Résultat numéro $i: ";
+        echo $req->description."</p>";
+
+        $i++;
+        }
+        }
+        catch (PDOException $exception)
+        {
+        return null;
+        }
       }
-    
+
 }
