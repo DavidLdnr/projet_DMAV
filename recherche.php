@@ -26,6 +26,7 @@
         try
         {
         	$recherche=ConnexionMediaBase::getInstance()->recherche($_POST['auteur'], $_POST['description'], $types);
+            var_dump($recherche);
         }
         catch (Exception $exception)
         {
