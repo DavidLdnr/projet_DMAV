@@ -31,8 +31,8 @@ private function __construct() {
         return null;
      }
   }
-    
-  public function insert_data($description, $file, $type) 
+
+  public function insert_data($description, $file, $type)
   {
 	  try
 		{
@@ -41,8 +41,8 @@ private function __construct() {
     $repertoire2 = "./multimedia/videos";
     $repertoire3 = "./multimedia/audio";
     $repertoire4 = "./multimedia/images";
-    $type = $_POST['type'];  
-		
+    $type = $_POST['type'];
+
     if (!file_exists($repertoire))
 	{
 		mkdir ($repertoire,0700);
@@ -67,7 +67,7 @@ private function __construct() {
 
     echo"1";
     if(isset($_FILES['file'])) // si formulaire soumis
-    { 
+    {
 	    echo"2";
         if($type == 1)
         {
@@ -80,15 +80,15 @@ private function __construct() {
         elseif($type == 3)
         {
 		    $content_dir = $repertoire4;// dossier où sera déplacé le fichier
-	    }  
-  
+	    }
+
         $tmp_file = $_FILES['file']['tmp_name'];
-	    
+
         if( !is_uploaded_file($tmp_file) )
         {
             exit("Le fichier est introuvable");
         }
-     
+
         // on vérifie maintenant l'extension
         $filename = $_FILES['file']['name'];
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
@@ -108,41 +108,40 @@ private function __construct() {
 	    }
          elseif ($type == 3)
         {
-            if($ext != 'gif'||$ext != 'svg'||$ext != 'png' ||$ext != 'jpg'||$ext != 'jpeg' )
+            if(!in_array($ext, array('gif', 'svg', 'png', 'jpg', 'jpeg')))
             {
                 exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
             }
 	    }
 
-            // on copie le fichier dans le dossier de destination
-            $name_file = $_FILES['file']['name'];
-            if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
-            {
-                exit("Nom de fichier non valide");
-            }
-            else if(!move_uploaded_file($tmp_file, $content_dir . $name_file))
-            {
-                exit("Impossible de copier le fichier dans $content_dir");
-            } 
+        // on copie le fichier dans le dossier de destination
+        $name_file = $_FILES['file']['name'];
+        $chemin = $content_dir.'/'.$name_file;
+        if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
+        {
+            exit("Nom de fichier non valide");
+        }
+        else if(!move_uploaded_file($tmp_file, $chemin))
+        {
+            exit("Impossible de copier le fichier dans $content_dir");
+        }
 
-            echo "Le fichier a bien été uploadé</br>";
+        echo "Le fichier a bien été uploadé</br>";
 
-	        $chemin = ($content_dir . $name_file);
-	        $nom = $name_file;
-        
-	
+	    $nom = $name_file;
 
-    $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '$ext', '$description', '$date', '".$_SESSION['user_id']."')";
-    echo $req;
-		$result=$this->dbh->query($req);
-	}
-else echo"3";	
+
+
+        $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '$ext', '$description', '$date', '".$_SESSION['user_id']."')";
+        echo $req;
+		    $result=$this->dbh->query($req);
+	    }
+        else echo"3";
 		}
 		catch (PDOException $exception)
 		{
 			return null;
 			echo"coucou";
-		 }
-	 
+		}
   }
 }
