@@ -1,5 +1,6 @@
 <?php
 class FormUpload {
+	//création du formulaire d'upload via la fonction magique __toString() 
 function __toString(){
 	       return ("<form action='index.php?page=upload' method='post' enctype='multipart/form-data'>
                         <label name='description'>Description</label><input type='text' name='description' value='' autofocus required>
