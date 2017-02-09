@@ -106,7 +106,7 @@ private function __construct() {
 	    }
          elseif ($type == 3)
         {
-            if(!in_array($ext, array('gif', 'svg', 'png', 'jpg', 'jpeg')))
+            if(!in_array(strtolower($ext), array('gif', 'svg', 'png', 'jpg', 'jpeg')))
             {
                 exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
             }
