@@ -228,5 +228,33 @@ private function __construct() {
         throw $exception;
     }
     }
+    
+ public function accueil()
+  {
+    $reqvideo = "SELECT * from datas where date in (select MAX(date) FROM datas where type=1)";
+    $reqaudio = "SELECT * from datas where date in (select MAX(date) FROM datas where type=2)";
+    $reqimage = "SELECT * from datas where date in (select MAX(date) FROM datas where type=3)";
+    
+    try
+    {
+        $array = [];
+        $result=$this->dbh->query($reqvideo);
+        $req=$result->fetchObject();
+        $array['video']=$req;
+        $result=$this->dbh->query($reqaudio);
+        $req=$result->fetchObject();
+        $array['audio']=$req;
+        $result=$this->dbh->query($reqimage);
+        $req=$result->fetchObject();
+        $array['image']=$req;
+        
+        return $array;
+       
+    }
+    catch (PDOException $exception)
+    {
+        throw $exception;
+    }
+    }
 
 }
