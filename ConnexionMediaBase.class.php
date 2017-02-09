@@ -204,18 +204,23 @@ private function __construct() {
     {
         $result=$this->dbh->query($req);
         $i=1;
+        $hasResult = false;
         while ($req=$result->fetchObject())
         {
-        echo "<p>Résultat numéro $i: ";
-        echo $req->description."</p>";
+            echo "<p>Résultat numéro $i: ";
+            echo $req->description."</p>";
+            $hasResult = true;
+            $i++;
+        }
 
-        $i++;
+        if(!$hasResult){
+            throw new Exception("Aucun résultat ne correspond à votre recherche.");
         }
-        }
-        catch (PDOException $exception)
-        {
-        return null;
-        }
-      }
+    }
+    catch (PDOException $exception)
+    {
+        throw $exception;
+    }
+    }
 
 }
