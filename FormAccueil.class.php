@@ -1,5 +1,6 @@
 <?php 
 class FormAccueil {
+	//création via la fonction magique __toString() de la page d'accueil
 function __toString(){
 	       return ("<div id='video'>
     <strong>Vidéo</strong>
