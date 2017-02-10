@@ -1,8 +1,12 @@
-@media screen and (min-width: 100mm) {
-    body {
-        margin-left: 20%;
-        width: 60%;
+@media screen {
+    html {
         min-height: 100%;
+        min-width: 100%;
+    }
+    body {
+        margin: 0 auto;
+        width: 60%;
+        height: 100%;
         color: #003443;
         position: relative;
     }
@@ -39,6 +43,13 @@
     }
     a:link {
         text-decoration: none;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
+    }
+    a:visited {
+        color: #00617D;
+    }
+    a:hover {
+        color: #FFCC87;
     }
     .btn {
         display: inline-block;
@@ -51,18 +62,16 @@
         border-radius: 5mm;
         background-color: #FFF6E7;
         width: 90%;
+        max-width: 100%;
     }
     .type video {
-        max-width: 200mm;
+        max-width: 100%;
     }
     .type img {
-        max-width: 200mm;
-    }
-    .type video:hover {
         max-width: 100%;
     }
-    .type img:hover {
-        max-width: 100%;
+    .type audio {
+        width: 80%;
     }
     .type,
     form {
@@ -131,5 +140,83 @@
     }
     #main {
         position: relative;
+    }
+}
+
+@media screen and (max-width: 120mm) {
+    body {
+        margin-left: 1%;
+        width: 97%;
+    }
+    .btn,
+    input[type="button"],
+    input[type="submit"] {
+        padding: 1px 4px;
+        border: 1px solid #2cabcf;
+        font-size: 0.9em;
+    }
+    .btn:hover,
+    input[type="button"]:hover,
+    input[type="submit"]:hover {
+        border: 1px solid #FFCC87;
+    }
+    input[type="submit"] {
+        margin: 2px 0px;
+        display: block;
+    }
+    input[type="text"],
+    input[type="password"] {
+        margin: 2px 0px;
+        font-size: 0.7em;
+    }
+    .type {
+        margin: 2px 0%;
+        width: 100%;
+    }
+    p {
+        margin: 5px;
+    }
+    .type,
+    form {
+        font-size: 0.8em;
+    }
+    .type audio {
+        width: 100%;
+    }
+    h2 {
+        padding: 0px 30px;
+        font-size: 1.2em;
+    }
+    h1 {
+        padding: 10px 0px;
+        border: 1px solid darkslategrey;
+        margin-top: 1%;
+    }
+    footer {
+        margin-top: 3%;
+        font-size: 0.4em;
+    }
+    form {
+        padding: 10px 0px;
+        margin-left: 2%;
+    }
+    label {
+        padding-right: 5px;
+    }
+    .error {
+        font-size: 1.1em;
+        margin: 0;
+        text-align: center;
+        padding: 15px 0px;
+    }
+    .ok {
+        font-size: 1em;
+        margin: auto 15%;
+        padding: 3px 3px;
+    }
+    .result {
+        font-size: 1em;
+        margin: 3% 1px 0px 10%;
+        width: 80%;
     }
 }
