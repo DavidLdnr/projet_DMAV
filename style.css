@@ -1,4 +1,4 @@
-@media screen {
+@media all {
     html {
         min-height: 100%;
         min-width: 100%;
@@ -143,7 +143,7 @@
     }
 }
 
-@media screen and (max-width: 120mm) {
+@media handheld and (max-width: 120mm) {
     body {
         margin-left: 1%;
         width: 97%;
