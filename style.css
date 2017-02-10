@@ -6,6 +6,7 @@
         color: #003443;
         position: relative;
     }
+    .btn,
     input[type="button"],
     input[type="submit"] {
         padding: 5px 25px;
