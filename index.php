@@ -31,8 +31,8 @@ Session::getInstance()->start(); // Démarrage de la session
                     // Si utilisateur connecté :
                     echo "<h2>Welcome ".$_SESSION['user_name']." !</h2>"; ?>
                     <div class='btn'>
-                        <a href="index.php?page=upload">
-                            <input type="button" name="upload " value="Upload" />
+                        <a href="index.php?page=upload">Upload
+                            <!--<input type="button" name="upload " value="Upload" />-->
                         </a>
                     </div>
                 <div class='btn'>

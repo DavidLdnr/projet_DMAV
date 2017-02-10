@@ -16,6 +16,7 @@
         color: #00617D;
         font-size: 1.1em;
     }
+    .btn:hover,
     input[type="button"]:hover,
     input[type="submit"]:hover {
         background: #2cabcf;
@@ -130,6 +131,5 @@
     }
     #main {
         position: relative;
-        min-height: 80%;
     }
 }
