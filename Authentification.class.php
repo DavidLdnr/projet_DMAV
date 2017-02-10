@@ -2,27 +2,27 @@
 class Authentification {
   private static $instance;
 
-//constructeur de la class
+//constructeur de la classe
   private function __construct(){}
 
-  //accesseur de la l'instance
+  //accesseur de l'instance
   public static function getInstance() {
       if (self::$instance == null)
           self::$instance = new Authentification();
       return self::$instance;
   }
- //fonction qui appelle la fonction exist_id() pour verifier si on est authantifié ou non
+ //fonction qui appelle la fonction exist_id() pour verifier si on est authentifié ou non
   public function isAuth(){
 	return Session::getInstance()->exist_id();
 	}
 
-	//on verifie les utilisateur 
+	//on verifie les utilisateurs
   public function checkUser($user_login, $mdp)
   {
       $user=ConnexionMediaBase::getInstance()->get_user($user_login);
       if ($user != null)
       {
-          // Reste à ajouter le grin de sel
+          // Reste à ajouter le grain de sel
           //$mdp=md5($mdp);
           $mdpbdd=$user->mdp;
           if ($mdpbdd==$mdp)

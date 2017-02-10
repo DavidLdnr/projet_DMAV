@@ -8,7 +8,7 @@ private $pass = '';
 private $db   = 'mediabase';
 private $dbh;
 
-//constructeur de la class ConnexionMediaBase
+//constructeur de la classe ConnexionMediaBase
 private function __construct() {
  $this->dbh = new PDO('mysql:host='.$this->host.';dbname='.$this->db, $this->user, $this->pass);
 }
@@ -18,7 +18,7 @@ private function __construct() {
     if (!self::$instance) self::$instance = new self();
     return self::$instance;
   }
-//accesseur de l'useur
+//accesseur de l'user
   public function get_user($pseudo){
   	$req = "SELECT * FROM users where pseudo='$pseudo'";
 	try
@@ -39,19 +39,19 @@ private function __construct() {
         return null;
      }
   }
-//fonction d'upload (transfert vers le serveur en français) des fichier
+//fonction d'upload (transfert vers le serveur en français) des fichiers
   public function insert_data($description, $file, $type)
   {
 	  try
 		{
-			//je récupère la dâte pour la stocker dans la base de donner pour la récuperer plus tard
+			//je récupère la date pour la stocker dans la base de données pour la récuperer plus tard
     $date = date('Y-m-d-H-i-s');
     $repertoire = "./multimedia";
     $repertoire2 = "./multimedia/videos";
     $repertoire3 = "./multimedia/audio";
     $repertoire4 = "./multimedia/images";
     $type = $_POST['type'];
- //au cas ou les répertoires n'éxistent pas je les créer
+ //au cas ou les répertoires n'éxistent pas je les crée
     if (!file_exists($repertoire))
 	{
 		mkdir ($repertoire,0700);
@@ -124,7 +124,7 @@ private function __construct() {
         // on copie le fichier dans le dossier de destination
         $name_file = $_FILES['file']['name'];
         $chemin = $content_dir.'/'.$name_file;
-		//on test si il n'y a pas de caractère impossible à mettre das un nom de fichier normalement via une regexp
+		//on teste si il n'y a pas de caractère impossible à mettre das un nom de fichier normalement via une regexp
         if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
         {
             throw new Exception("Nom de fichier non valide");
@@ -135,7 +135,7 @@ private function __construct() {
         }
 
 	    $nom = $name_file;
-		//requête de stockage dans la base de donnée le fichier
+		//requête de stockage dans la base de données du fichier
         $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '".$_FILES['file']['type']."', '$description', '$date', '".$_SESSION['user_id']."')";
 		//execution de la requête
 		    $result=$this->dbh->query($req);

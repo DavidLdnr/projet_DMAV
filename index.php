@@ -1,5 +1,5 @@
 <?php 
-require_once('autoload.php'); // Autoload pour chargement des class.php
+require_once('autoload.php'); // Autoload pour chargement des classes
 Session::getInstance()->start(); // Démarrage de la session
 ?>
     <!DOCTYPE html>
@@ -19,7 +19,7 @@ Session::getInstance()->start(); // Démarrage de la session
             </header>
             <div id="main">
                 <?php
-		        if (Authentification::getInstance()->isAuth()==false) // Test de la connexion de l'utilisateur, si non connecté :
+		        if (Authentification::getInstance()->isAuth()==false) // Test de la connexion de l'utilisateur, si non connecté
 		        { ?>
                     <div class='btn'>
                         <a href="index.php?page=connexion">Connexion
