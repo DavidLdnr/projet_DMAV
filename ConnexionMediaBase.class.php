@@ -25,7 +25,14 @@ private function __construct() {
     {
  	    $result=$this->dbh->query($req);
         $obj=$result->fetchObject();
-        return new User($obj->id,$obj->pseudo,$obj->mdp);
+        if($obj)
+        {
+            return new User($obj->id,$obj->pseudo,$obj->mdp);
+        }
+        else 
+        {
+            return null;
+        }
      }
      catch (PDOException $exception)
      {

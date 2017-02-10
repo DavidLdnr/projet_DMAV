@@ -17,24 +17,29 @@ class Authentification {
 	}
 
 	//on verifie les utilisateur 
-  public function checkUser($user_login, $mdp){
-	$user=ConnexionMediaBase::getInstance()->get_user($user_login);
-	if ($user != null)
-		{
-		// Reste à ajouter le grin de sel
-		//$mdp=md5($mdp);
-		$mdpbdd=$user->mdp;
-		if ($mdpbdd==$mdp)
-		{
-			Session::getInstance()->save($user);
-			header('Location: ./index.php');
-
-		}
-		else
-			return false;
-		}
-	else return false;
-	}
+  public function checkUser($user_login, $mdp)
+  {
+      $user=ConnexionMediaBase::getInstance()->get_user($user_login);
+      if ($user != null)
+      {
+          // Reste à ajouter le grin de sel
+          //$mdp=md5($mdp);
+          $mdpbdd=$user->mdp;
+          if ($mdpbdd==$mdp)
+          {
+              Session::getInstance()->save($user);
+              return true;
+          }
+          else
+          {
+              return false;
+          }
+      }
+      else
+      {
+          return false;
+      }
+  }
 
 	// on déconnecte l'utilisateur en utilisant la fonction stop()
   public function disconnect(){
