@@ -1,22 +1,38 @@
-@media screen and (min-width: 120mm) {
+@media screen and (min-width: 100mm) {
     body {
         margin-left: 20%;
-    }
-    footer {
+        width: 60%;
+        min-height: 100%;
+        color: #003443;
     }
     input[type="button"],
     input[type="submit"] {
-        padding: 5px 10px;
+        padding: 5px 25px;
         background: #FFCC87;
         border: 2px solid #2cabcf;
         border-radius: 10px;
         color: #00617D;
+        font-size: 1.1em;
     }
     input[type="button"]:hover,
     input[type="submit"]:hover {
         background: #2cabcf;
         border: 2px solid #FFCC87;
         color: #FFCC87;
+    }
+    input[type="button"] {
+        margin-right: 25px;
+    }
+    input[type="submit"] {
+        margin: 10px 0px;
+        display: block;
+    }
+    input[type="text"],
+    input[type="password"] {
+        margin: 20px 0px;
+        background-color: #FFF6E7;
+        font-size: 0.9em;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
     }
     a:link {
         text-decoration: none;
@@ -26,13 +42,29 @@
     }
     .type {
         display: block;
-        padding: 15px 10px;
+        margin: 5px 5%;
+        border: 1px solid #2cabcf;
+        text-align: center;
+        border-radius: 5mm;
+        background-color: #FFF6E7;
+        width: 90%;
     }
     .type video {
-        max-width: 500px;
+        max-width: 200mm;
     }
     .type img {
-        max-width: 500px;
+        max-width: 200mm;
+    }
+    .type video:hover {
+        max-width: 100%;
+    }
+    .type img:hover {
+        max-width: 100%;
+    }
+    .type,
+    form {
+        font-size: 1.1em;
+        font-family: Verdana, Arial, Helvetica, sans-serif;
     }
     h2 {
         color: #00617D;
@@ -45,9 +77,17 @@
         background: #FF9404;
         border: 2px solid darkslategrey;
         border-radius: 10px;
-        width: 80%;
+        width: 100%;
+        text-shadow: -1px 1px 2px #2cabcf;
+    }
+    footer {
+        font-size: 0.6em;
     }
     form {
         padding: 20px 0px;
+        margin-left: 5%;
+    }
+    label {
+        padding-right: 15px;
     }
 }
