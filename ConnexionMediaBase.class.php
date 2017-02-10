@@ -55,23 +55,23 @@ private function __construct() {
     if (!file_exists($repertoire))
 	{
 		mkdir ($repertoire,0700);
-		echo " -=> Création du repertoire $repertoire réussi<br>";
+		//echo " -=> Création du repertoire $repertoire réussi<br>";
 	}
 	if (!file_exists($repertoire2))
 	{
 		mkdir ($repertoire2,0700);
-		echo " -=> Création du repertoire $repertoire2 réussi<br>";
+		//echo " -=> Création du repertoire $repertoire2 réussi<br>";
 	}
 	if (!file_exists($repertoire3))
 	{
 		mkdir ($repertoire3,0700);
-		echo " -=> Création du repertoire $repertoire3 réussi<br>";
+		//echo " -=> Création du repertoire $repertoire3 réussi<br>";
 	}
 
 	if (!file_exists($repertoire4))
 	{
 		mkdir ($repertoire4,0700);
-		echo " -=> Création du repertoire $repertoire4 réussi<br>";
+		//echo " -=> Création du repertoire $repertoire4 réussi<br>";
 	}
 
     if(isset($_FILES['file'])) // si formulaire soumis
@@ -93,7 +93,7 @@ private function __construct() {
 
         if( !is_uploaded_file($tmp_file) )
         {
-            exit("Le fichier est introuvable");
+            throw new Exception("Le fichier est introuvable");
         }
 
         // on vérifie maintenant l'extension
@@ -103,21 +103,21 @@ private function __construct() {
         {
             if(!in_array(strtolower($ext), array('webm', 'avi')))
             {
-                exit("Le fichier n'est pas un webm,veuillez le convertir en webm s'il vous plais!!!!!!!!!!");
+                throw new Exception("Le fichier doit être du type webm ou avi.");
             }
 		}
         elseif ($type == 2)
         {
             if(!in_array(strtolower($ext), array('ogg', 'mp3')))
             {
-                exit("Le fichier n'est pas un ogg,veuillez le convertir en ogg s'il vous plais!!!!!!!!!!");
+                throw new Exception("Le fichier doit être du type ogg ou mp3!");
             }
 	    }
          elseif ($type == 3)
         {
              if(!in_array(strtolower($ext), array('gif', 'svg', 'png', 'jpg', 'jpeg')))
             {
-                exit("Veuillez convertir l'image en PNG,JPG/JPEG ou en GIF s'il vous plais!!!!!!!!!!");
+                throw new Exception("Le fichier doit être du type PNG,JPG/JPEG ou en GIF");
             }
 	    }
 
@@ -127,11 +127,11 @@ private function __construct() {
 		//on test si il n'y a pas de caractère impossible à mettre das un nom de fichier normalement via une regexp
         if(preg_match('#[\x00-\x1F\x7F-\x9F/\\\\]#', $name_file))
         {
-            exit("Nom de fichier non valide");
+            throw new Exception("Nom de fichier non valide");
         }
         else if(!move_uploaded_file($tmp_file, $chemin))
         {
-            exit("Impossible de copier le fichier dans $content_dir");
+           throw new Exception("Impossible de copier le fichier dans $content_dir");
         }
 
 	    $nom = $name_file;

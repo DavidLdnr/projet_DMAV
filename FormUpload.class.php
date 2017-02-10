@@ -59,15 +59,25 @@ class FormUpload {
         {
             if($this->check())
             {
-                $envoie=ConnexionMediaBase::getInstance()->insert_data($_POST['description'],$_FILES['file'], $_POST['type']);
-                if($envoie)
+                try
                 {
-                    echo "<span class='ok'>Votre fichier est bien enregistré.</span>";
+                	$envoie=ConnexionMediaBase::getInstance()->insert_data($_POST['description'],$_FILES['file'], $_POST['type']);
+                    if($envoie)
+                    {
+                        echo "<span class='ok'>Votre fichier est bien enregistré.</span>";
+                        return;
+                    }
                 }
+                catch (Exception $exception)
+                {
+                    echo "<span class='error'>".$exception->getMessage()."</span>";
+                    return;
+                }
+
             }
             else
             {
-                echo "<span class='error'>Tous les champs sont nécessaires</span>";
+                echo "<span class='error'>Tous les champs sont nécessaires.</span>";
             }
         }
     }
