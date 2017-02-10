@@ -2,6 +2,8 @@
     body {
         margin-left: 20%;
     }
+    footer {
+    }
     input[type="button"],
     input[type="submit"] {
         padding: 5px 10px;
