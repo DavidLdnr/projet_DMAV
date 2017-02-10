@@ -62,7 +62,7 @@ class FormUpload {
                 $envoie=ConnexionMediaBase::getInstance()->insert_data($_POST['description'],$_FILES['file'], $_POST['type']);
                 if($envoie)
                 {
-                    echo "Votre fichier est bien enregistré.";
+                    echo "<span class='ok'>Votre fichier est bien enregistré.</span>";
                 }
             }
             else
