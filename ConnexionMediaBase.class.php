@@ -29,7 +29,7 @@ private function __construct() {
         {
             return new User($obj->id,$obj->pseudo,$obj->mdp);
         }
-        else 
+        else
         {
             return null;
         }
@@ -44,14 +44,14 @@ private function __construct() {
   {
 	  try
 		{
-			//je récupère la dâte pour la stocker dans la base de donner pour la récuperer plus tard 
+			//je récupère la dâte pour la stocker dans la base de donner pour la récuperer plus tard
     $date = date('Y-m-d-H-i-s');
     $repertoire = "./multimedia";
     $repertoire2 = "./multimedia/videos";
     $repertoire3 = "./multimedia/audio";
     $repertoire4 = "./multimedia/images";
     $type = $_POST['type'];
- //au cas ou les répertoires n'éxistent pas je les créer 
+ //au cas ou les répertoires n'éxistent pas je les créer
     if (!file_exists($repertoire))
 	{
 		mkdir ($repertoire,0700);
@@ -101,14 +101,14 @@ private function __construct() {
         $ext = pathinfo($filename, PATHINFO_EXTENSION);
 	    if ($type == 1)
         {
-            if($ext != 'webm')
+            if(!in_array(strtolower($ext), array('webm', 'avi')))
             {
                 exit("Le fichier n'est pas un webm,veuillez le convertir en webm s'il vous plais!!!!!!!!!!");
             }
 		}
         elseif ($type == 2)
         {
-            if($ext != 'ogg')
+            if(!in_array(strtolower($ext), array('ogg', 'mp3')))
             {
                 exit("Le fichier n'est pas un ogg,veuillez le convertir en ogg s'il vous plais!!!!!!!!!!");
             }
@@ -137,7 +137,7 @@ private function __construct() {
 	    $nom = $name_file;
 		//requête de stockage dans la base de donnée le fichier
         $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '".$_FILES['file']['type']."', '$description', '$date', '".$_SESSION['user_id']."')";
-		//execution de la requête 
+		//execution de la requête
 		    $result=$this->dbh->query($req);
             return $result;
 	    }
@@ -232,13 +232,13 @@ private function __construct() {
         throw $exception;
     }
     }
-    
+
  public function accueil()
   {
     $reqvideo = "SELECT * from datas where date in (select MAX(date) FROM datas where type=1)";
     $reqaudio = "SELECT * from datas where date in (select MAX(date) FROM datas where type=2)";
     $reqimage = "SELECT * from datas where date in (select MAX(date) FROM datas where type=3)";
-    
+
     try
     {
         $array = [];
@@ -254,9 +254,9 @@ private function __construct() {
         $req=$result->fetchObject();
         if ($req!=null)
         $array['image']=$req;
-        
+
         return $array;
-       
+
     }
     catch (PDOException $exception)
     {
