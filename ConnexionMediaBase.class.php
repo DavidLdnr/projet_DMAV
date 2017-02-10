@@ -127,21 +127,18 @@ private function __construct() {
             exit("Impossible de copier le fichier dans $content_dir");
         }
 
-        echo "Le fichier a bien été uploadé</br>";
-
 	    $nom = $name_file;
 		//requête de stockage dans la base de donnée le fichier
         $req="INSERT INTO DATAS (`type`, `chemin`, `mimetype`, `description`, `date`, `id_user`) VALUES ('$type', '$chemin', '".$_FILES['file']['type']."', '$description', '$date', '".$_SESSION['user_id']."')";
-        echo $req;
 		//execution de la requête 
 		    $result=$this->dbh->query($req);
+            return $result;
 	    }
 
 		}
 		catch (PDOException $exception)
 		{
-			return null;
-			exit("erreur de transfert vers le serveur");
+			return false;
 		}
   }
 
