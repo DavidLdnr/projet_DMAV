@@ -14,7 +14,7 @@ class FormConnexion {
 	    if(!Authentification::getInstance()->checkUser($user_login,$mdp))
         {
             echo $this;
-            echo "<span class='error'>Le login et le mot ne correspondent à aucun utlisateur</span>";
+            echo "<span class='error'>Le login et le mot ne correspondent à aucun utilisateur.</span>";
         }
         else
         {
