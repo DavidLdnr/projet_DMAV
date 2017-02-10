@@ -26,7 +26,7 @@
         try
         {
         	$recherche=ConnexionMediaBase::getInstance()->recherche($_POST['auteur'], $_POST['description'], $types);
-            echo "<h3>Résultats de votre recherche :</h3>";
+            echo "<span class='result'>Résultats de votre recherche</span>";
             foreach($recherche as $req)
             {
                 if ($req->type==1)
@@ -44,7 +44,7 @@
         }
         catch (Exception $exception)
         {
-            echo $exception->getMessage();
+            echo "<span class='error'>".$exception->getMessage()."</span>";
         }
         
     }

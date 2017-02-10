@@ -7,6 +7,7 @@
  try
         {
         	$accueil=ConnexionMediaBase::getInstance()->accueil();
+            echo "<span class='result'>Derniers ajouts</span>";
             foreach($accueil as $req)
             {
                 if ($req->type==1)

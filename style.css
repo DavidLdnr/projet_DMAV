@@ -95,6 +95,33 @@
     }
     .error {
         font-size: 1.5em;
+        font-style: italic;
+        font-weight: bold;
+        text-decoration: underline;
+        text-decoration-color: #FF9404;
+        margin-left: 35px;
+        padding: 25px 40px;
+        display: block;
+    }
+    .ok {
+        font-size: 1.5em;
+        color: #00617D;
+        margin-left: 35px;
+        background-color: #FFF6E7;
+        border: 1px solid #2cabcf;
+        border-radius: 1mm;
+        padding: 5px 40px;
+    }
+    .result {
+        font-size: 1.5em;
+        color: #00617D;
+        background-color: #FFF6E7;
+        border: 1px solid #2cabcf;
+        border-radius: 10mm;
+        display: block;
+        text-align: center;
+        margin: 3% 1px 0px 25%;
+        width: 50%;
     }
     #container {
         position: relative;
