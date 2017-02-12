@@ -27,6 +27,7 @@
         border: 2px solid #FFCC87;
         color: #FFCC87;
     }
+    .btn,
     input[type="button"] {
         margin-right: 25px;
     }
@@ -145,15 +146,18 @@
 
 @media screen and (max-width: 120mm) {
     body {
-        margin-left: 1%;
-        width: 97%;
+        margin-left: 1px;
+        width: 98.9%;
     }
     .btn,
     input[type="button"],
     input[type="submit"] {
-        padding: 1px 4px;
+        padding: 1px 3.5px;
         border: 1px solid #2cabcf;
         font-size: 0.9em;
+    }
+    input[type="submit"] {
+        font-size: 1.2em;
     }
     .btn:hover,
     input[type="button"]:hover,
@@ -167,7 +171,11 @@
     input[type="text"],
     input[type="password"] {
         margin: 2px 0px;
-        font-size: 0.7em;
+        font-size: 0.9em;
+    }
+    .btn,
+    input[type="button"] {
+        margin-right: 0px;
     }
     .type {
         margin: 2px 0%;
@@ -190,7 +198,7 @@
     h1 {
         padding: 10px 0px;
         border: 1px solid darkslategrey;
-        margin-top: 1%;
+        margin-top: 1px;
     }
     footer {
         margin-top: 3%;

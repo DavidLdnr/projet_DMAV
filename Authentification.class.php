@@ -22,8 +22,7 @@ class Authentification {
       $user=ConnexionMediaBase::getInstance()->get_user($user_login);
       if ($user != null)
       {
-          // Reste à ajouter le grain de sel
-          //$mdp=md5($mdp);
+          $mdp=md5("grainde".$mdp."sel");
           $mdpbdd=$user->mdp;
           if ($mdpbdd==$mdp)
           {

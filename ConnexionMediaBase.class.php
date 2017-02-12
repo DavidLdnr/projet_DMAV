@@ -1,5 +1,4 @@
 <?php
-
 class ConnexionMediaBase {
 private static $instance;
 private $host = 'localhost';
@@ -235,10 +234,10 @@ private function __construct() {
 
  public function accueil()
   {
+    // Sélection des derniers ajouts pour chaque type, seront affichés en page d'accueil
     $reqvideo = "SELECT * from datas where date in (select MAX(date) FROM datas where type=1)";
     $reqaudio = "SELECT * from datas where date in (select MAX(date) FROM datas where type=2)";
     $reqimage = "SELECT * from datas where date in (select MAX(date) FROM datas where type=3)";
-
     try
     {
         $array = [];
@@ -254,14 +253,36 @@ private function __construct() {
         $req=$result->fetchObject();
         if ($req!=null)
         $array['image']=$req;
-
         return $array;
-
     }
     catch (PDOException $exception)
     {
         throw $exception;
     }
+    }
+    
+    
+    public function insert_user($login,$mdp){
+        try
+		{ 
+        // Vérification de l'existance du pseudo dans la bdd
+        $reqlogin="SELECT * FROM users where pseudo='$login'";
+        $result=$this->dbh->query($reqlogin);
+        $user=$result->fetchObject();
+        if ($user == null)
+        {
+            $mdp=md5("grainde".$mdp."sel");
+            $req="INSERT INTO USERS (`pseudo`, `mdp`) VALUES ('$login', '$mdp')";
+            //execution de la requête
+            $result=$this->dbh->query($req);
+            return $result;
+	    }
+            else throw new Exception("Pseudo déjà utilisé !"); 
+        }
+		catch (PDOException $exception)
+		{
+			return false;
+		}
     }
 
 }

@@ -26,39 +26,47 @@ Session::getInstance()->start(); // Démarrage de la session
                             <!--<input type="button" name="Connexion " value="Connexion" />-->
                         </a>
                     </div>
-                            <?php }
+                    <div class='btn'>
+                        <a href="index.php?page=adduser">Inscription
+                            <!--<input type="button" name="adduser" value="Inscription" />-->
+                        </a>
+                    </div>
+
+
+
+                    <?php }
 		        else { 
                     // Si utilisateur connecté :
                     echo "<h2>Welcome ".$_SESSION['user_name']." !</h2>"; ?>
-                    <div class='btn'>
-                        <a href="index.php?page=upload">Upload
+                        <div class='btn'>
+                            <a href="index.php?page=upload">Upload
                             <!--<input type="button" name="upload " value="Upload" />-->
                         </a>
-                    </div>
-                <div class='btn'>
-                    <a href="index.php?page=deconnexion">
+                        </div>
+                        <div class='btn'>
+                            <a href="index.php?page=deconnexion">
                         Déconnexion
                         <!--<input type="button" name="déconnexion " value="Déconnexion" />-->
                     </a>
-                </div>
-                <?php } ?>
+                        </div>
+                        <?php } ?>
 
-                    <div class='btn'>
-                        <a href="index.php?page=recherche">Recherche
+                            <div class='btn'>
+                                <a href="index.php?page=recherche">Recherche
                             <!--<input type="button" name="recherche " value="Recherche" />-->
                         </a>
-                    </div>
-                        <?php // Si la page est précisée, on la passe en paramètre, sinon accueil est par défaut
+                            </div>
+                            <?php // Si la page est précisée, on la passe en paramètre, sinon accueil est par défaut
                     if(!empty($_GET['page']))
                     {
 	                    $page = $_GET['page'];
                         ?>
-                                        <div class='btn'>
-                                            <a href="index.php">Accueil
+                                <div class='btn'>
+                                    <a href="index.php">Accueil
                                                 <!--<input type="button" name="accueil " value="Accueil" />-->
                                             </a>
-                                        </div>
-                                        <?php
+                                </div>
+                                <?php
                     } else
                     {
                         $page = 'accueil';
@@ -68,9 +76,9 @@ Session::getInstance()->start(); // Démarrage de la session
             </div>
             <footer>
                 <h1>Copyright 2017 - David - Marie - Antoine - Vincent</h1>
-            </footer> 
+            </footer>
         </div>
-        
+
     </body>
 
     </html>
