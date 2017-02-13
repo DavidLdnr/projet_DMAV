@@ -44,7 +44,7 @@ Session::getInstance()->start(); // Démarrage de la session
                         </a>
                         </div>
                         <div class='btn'>
-                            <a href="index.php?page=deconnexion">
+                            <a href="deconnexion.php">
                         Déconnexion
                         <!--<input type="button" name="déconnexion " value="Déconnexion" />-->
                     </a>

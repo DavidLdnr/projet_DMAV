@@ -1,4 +1,5 @@
 <?php
+require_once('autoload.php');
 if(!Authentification::getInstance()->isAuth())
 {
     header('Location:index.php');

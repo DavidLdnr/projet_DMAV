@@ -1,4 +1,5 @@
 <?php
+require_once('autoload.php');
 	$obj = new FormRecherche;
 	if (!isset($_POST['auteur']) || !isset($_POST['description']))
     {
